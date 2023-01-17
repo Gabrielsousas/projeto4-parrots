@@ -6,9 +6,11 @@ let deck = [];
 
 let imagens = ["1", "2", "3", "4", "5", "6", "7"];
 
+imagens.sort(() => Math.random() - 0.5);
+
 let contadorDeJogadas = 0;
 
-let acertos= 0;
+let acertos = 0;
 
 while (numeroDeCartas % 2 !== 0 || numeroDeCartas < 4 || numeroDeCartas > 14) {
   numeroDeCartas = prompt(
@@ -16,28 +18,25 @@ while (numeroDeCartas % 2 !== 0 || numeroDeCartas < 4 || numeroDeCartas > 14) {
   );
 }
 
-
-
 criarDeckEmbaralhável();
 
 createCards();
 createCards();
 
 function createCards() {
+  deck.sort(() => Math.random() - 0.5);
   for (let i = 0; i < numeroDeCartas / 2; i++) {
     cartaAleatoria = deck[i];
     board.innerHTML =
       board.innerHTML +
       `<div class="card" data-image="${cartaAleatoria}">
       <div class="card__face card__face--back" > 
-      <img src="./imagens/${cartaAleatoria}.gif" alt=""></div>
+      <img src="/imagens/${cartaAleatoria}.gif" alt=""></div>
       <div class="card__face card__face--front">
-      <img src="./imagens/back.png" alt=""></div></div>
+      <img src="/imagens/back.png" alt=""></div></div>
       </div>`;
   }
 }
-
-shuffleArray(deck);
 
 function shuffleArray(array) {
   return Math.random() - 0.5;
@@ -64,33 +63,33 @@ function virarCartas() {
   } else {
     hasFlippedCard = false;
     secondCard = this;
-    contadorDeJogadas +=1;
-    compararCartas()
+    contadorDeJogadas += 1;
+    compararCartas();
   }
 }
 
-function compararCartas(){
-let tempVar1 = firstCard.dataset.image;
-let tempVar2 = secondCard.dataset.image;
-if (tempVar1 === tempVar2) {
-  firstCard.removeEventListener("click", virarCartas);
-  secondCard.removeEventListener("click", virarCartas);
-  acertos +=1;
-  setTimeout(() => {
-  (verificarVitoria())},1000)
-} else {
-  setTimeout(() => {
-    firstCard.classList.remove("is-flipped");
-    secondCard.classList.remove("is-flipped");
-  }, 1000);
-}
-}
-
-function verificarVitoria(){
-  if (acertos === (numeroDeCartas / 2)){
-    alert(`Você ganhou em ${contadorDeJogadas} jogadas!`)
+function compararCartas() {
+  let tempVar1 = firstCard.dataset.image;
+  let tempVar2 = secondCard.dataset.image;
+  if (tempVar1 === tempVar2) {
+    firstCard.removeEventListener("click", virarCartas);
+    secondCard.removeEventListener("click", virarCartas);
+    acertos += 1;
+    setTimeout(() => {
+      verificarVitoria();
+    }, 1000);
+  } else {
+    setTimeout(() => {
+      firstCard.classList.remove("is-flipped");
+      secondCard.classList.remove("is-flipped");
+    }, 1000);
   }
 }
 
+function verificarVitoria() {
+  if (acertos === numeroDeCartas / 2) {
+    alert(`Você ganhou em ${contadorDeJogadas} jogadas!`);
+  }
+}
 
 cards.forEach((card) => card.addEventListener("click", virarCartas));
