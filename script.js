@@ -30,9 +30,9 @@ function createCards() {
       board.innerHTML +
       `<div class="card" data-image="${cartaAleatoria}">
       <div class="card__face card__face--back" > 
-      <img src="/imagens/${cartaAleatoria}.gif" alt=""></div>
+      <img src="./imagens/${cartaAleatoria}.gif" alt=""></div>
       <div class="card__face card__face--front">
-      <img src="/imagens/back.png" alt=""></div></div>
+      <img src="./imagens/back.png" alt=""></div></div>
       </div>`;
   }
 }
