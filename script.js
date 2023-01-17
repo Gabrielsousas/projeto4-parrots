@@ -29,11 +29,11 @@ function createCards() {
     cartaAleatoria = deck[i];
     board.innerHTML =
       board.innerHTML +
-      `<div class="card" data-image="${cartaAleatoria}">
+      `<div class="card" data-test="card" data-image="${cartaAleatoria}">
       <div class="card__face card__face--back" > 
-      <img src="/imagens/${cartaAleatoria}.gif" alt=""></div>
+      <img data-test="face-up-image" src="/imagens/${cartaAleatoria}.gif" alt=""></div>
       <div class="card__face card__face--front">
-      <img src="/imagens/back.png" alt=""></div></div>
+      <img data-test="face-down-image" src="/imagens/back.png" alt=""></div></div>
       </div>`;
   }
 }
