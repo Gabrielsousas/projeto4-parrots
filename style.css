@@ -1,16 +1,17 @@
 body {
   font-family: sans-serif;
-  background-color: #EEF9BF;
+  background-color: #eef9bf;
 }
 
 h1 {
+  margin: 10px 0;
   font-family: Roboto;
   font-size: 56px;
   font-weight: 700;
   line-height: 66px;
   letter-spacing: -0.004em;
   text-align: center;
-  color: #75B79E;
+  color: #75b79e;
 }
 
 .scene {
